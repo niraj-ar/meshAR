@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
 
-function App() {
+import ModelViewer from "./components/ModelViewer";
+import { ARObjects } from "./data/ARObjects";
+
+const NoElement = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+    <>
+      <div className="w-screen h-screen flex flex-col gap-1 justify-center items-center">
+        <p className="font-mono font-bold text-3xl text-red-900 bg-red-400 px-8 py-4 border border-red-800 rounded-2xl">
+          404
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          className="font-mono text- font-bold text-blue-700 underline"
+          to="https://v325ph.codesandbox.io/"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          Please return to home
+        </Link>
+      </div>
+    </>
+  );
+};
+
+export default function App() {
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<ModelViewer />} />
+        {ARObjects.map((ARObject, i) => (
+          <Route key={i} path={ARObject.id} element={<ModelViewer />} />
+        ))}
+        <Route path="*" element={<NoElement />} />
+      </Routes>
+    </>
   );
 }
-
-export default App;
