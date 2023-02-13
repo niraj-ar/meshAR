@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import ModelSheet from "./ModelSheet";
 
 const ModelViewer = () => {
   const ModRef = useRef();
@@ -15,6 +16,7 @@ const ModelViewer = () => {
         ar
         ar-scale="fixed"
         disable-tap
+        disable-pan
         ar-placement="floor"
         ar-modes="webxr scene-viewer quick-look"
         shadow-intensity="1"
@@ -25,10 +27,17 @@ const ModelViewer = () => {
       >
         <button
           slot="ar-button"
-          className="px-2 py-1 text-secondaryText font-semibold bg-secondary border border-secondaryText rounded-md"
+          className="px-2 py-1 text-secondaryText font-semibold bg-secondary border border-secondaryText rounded-2xl"
+          style={{
+            position: "absolute",
+            bottom: "10%",
+            left: "50%",
+            translate: "-50% 0",
+          }}
         >
           View in Your Space
         </button>
+        <ModelSheet />
       </model-viewer>
     </>
   );

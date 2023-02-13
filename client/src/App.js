@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-
 import ModelViewer from "./components/ModelViewer";
-import { ARObjects } from "./data/ARObjects";
+
+export default function App() {
+  return (
+    <>
+      <ModelViewer />
+    </>
+  );
+}
 
 const NoElement = () => {
   return (
@@ -21,17 +27,3 @@ const NoElement = () => {
     </>
   );
 };
-
-export default function App() {
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<ModelViewer />} />
-        {ARObjects.map((ARObject, i) => (
-          <Route key={i} path={ARObject.id} element={<ModelViewer />} />
-        ))}
-        <Route path="*" element={<NoElement />} />
-      </Routes>
-    </>
-  );
-}

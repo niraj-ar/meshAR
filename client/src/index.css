@@ -15,14 +15,19 @@ model-viewer {
   cursor: grab;
   display: flex;
   justify-content: center;
-  height: 100vh;
+  height: 85vh;
   width: 100%;
   overflow: hidden;
   position: relative;
   user-select: none;
 }
 
-.cursor-icon {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><circle cx='10' cy='10' r='10' fill='red'/></svg>"),
-    auto;
+:root {
+  --rsbs-backdrop-bg: rgba(0, 0, 0, 0);
+  --rsbs-bg: #fff;
+  --rsbs-handle-bg: hsla(0, 0%, 0%, 0.2);
+  --rsbs-max-w: auto;
+  --rsbs-ml: env(safe-area-inset-left);
+  --rsbs-mr: env(safe-area-inset-right);
+  --rsbs-overlay-rounded: 16px;
 }
